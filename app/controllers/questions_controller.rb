@@ -5,8 +5,10 @@ class QuestionsController < ApplicationController
   def create
     question_params = params.require(:question).permit(:body, :user_id)
 
-    question_params[:who_ask] = current_user
-    
+    if current_user.present?
+      question_params[:who_ask] = current_user
+    end
+
     @question = Question.create(question_params)
 
     redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'

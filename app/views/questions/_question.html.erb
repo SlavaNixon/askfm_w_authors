@@ -1,5 +1,11 @@
 <div class="mb-sm">
-  <%= link_to "@#{question.who_ask.nickname}", user_path(question.who_ask) %>
+  <% if question.who_ask == question.user %>
+    <p class="text-grey">Автор задал вопрос сам себе (<%= link_to "@#{question.who_ask.nickname}", user_path(question.who_ask) %>)</p>
+  <% elsif question.who_ask.present? %>
+    <%= link_to "@#{question.who_ask.nickname}", user_path(question.who_ask) %>
+  <% else %>
+    <div class="text-grey">Аноним</div>
+  <% end %>
 </div>
 
 <div class="mb-sm">
