@@ -1,8 +1,7 @@
 class User < ApplicationRecord
 
   extend FriendlyId
-  attr_accessor :slug
-  friendly_id :nickname, use: [:slugged, :finders]
+  friendly_id :nickname, use: :slugged
 
   has_secure_password
 
