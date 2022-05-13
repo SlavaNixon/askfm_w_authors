@@ -14,6 +14,10 @@
   margin-bottom: 0.6rem;  
 }
 
+.mb-ssm{
+  margin-bottom: 0.25rem; 
+}
+
 .mb, .mb-md {
   margin-bottom: 1rem;
 }
