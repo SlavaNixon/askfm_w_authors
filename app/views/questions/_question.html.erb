@@ -2,7 +2,7 @@
   <% if question.who_ask == question.user %>
     <p class="text-grey">Автор задал вопрос сам себе (<%= link_to "@#{question.who_ask.nickname}", user_path(question.who_ask) %>)</p>
   <% elsif question.who_ask.present? %>
-    <%= link_to "@#{question.who_ask.nickname}", user_path(question.who_ask) %>
+    <p class="text-grey">Автор вопроса: <%= link_to "@#{question.who_ask.nickname}", user_path(question.who_ask) %></p>
   <% else %>
     <div class="text-grey">Аноним</div>
   <% end %>
@@ -12,14 +12,14 @@
   <%= question.body %>
 </div>
 
-<div class="mb-sm">
-  <% unless question.who_ask == question.user %>
+<% unless question.who_ask == question.user %>
+  <div class="mb-sm">
     <p class="text-grey">Вопрос задан пользователю: <%= link_to "@#{question.user.nickname}", user_path(question.user) %></p>
-  <% end %>
-</div>
+  </div>
+<% unless question.who_ask == question.user %>
 
 <% if question.answer.present? %>
-  <div class="mb-sm text-dark-red">
+  <div class="mb-sm mt-sm text-dark-red">
     <%= question.answer %>
   </div>
 <% end %>
