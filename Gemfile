@@ -5,6 +5,8 @@ ruby "3.0.2"
 
 gem 'font-awesome-rails'
 
+gem 'friendly_id', '~> 5.4.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
 
