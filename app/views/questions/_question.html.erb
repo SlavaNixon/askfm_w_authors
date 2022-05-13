@@ -12,6 +12,12 @@
   <%= question.body %>
 </div>
 
+<div class="mb-sm">
+  <% unless question.who_ask == question.user %>
+    <p class="text-grey">Вопрос задан пользователю: <%= link_to "@#{question.user.nickname}", user_path(question.user) %></p>
+  <% end %>
+</div>
+
 <% if question.answer.present? %>
   <div class="mb-sm text-dark-red">
     <%= question.answer %>
