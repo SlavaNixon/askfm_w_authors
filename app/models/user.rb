@@ -1,8 +1,5 @@
 class User < ApplicationRecord
 
-  extend FriendlyId
-  friendly_id :nickname, use: :slugged
-
   has_secure_password
 
   before_save :downcase_nickname
@@ -10,6 +7,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :questions, dependent: :delete_all
+
+  def to_param
+    nickname
+  end
 
   def downcase_nickname
     nickname.downcase!
