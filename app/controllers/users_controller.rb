@@ -41,8 +41,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @questions = @user.questions.order(created_at: :desc)
-    @question = Question.new(user: @user)
+    if @user.present?
+      @questions = @user.questions.order(created_at: :desc)
+      @question = Question.new(user: @user)
+    end
   end
 
   private
