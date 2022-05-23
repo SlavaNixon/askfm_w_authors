@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
   def redirect_with_alert
     redirect_to root_path, alert: 'Вам сюда нельзя!'
   end
+
+  def render_404
+    raise ActionController::RoutingError.new('Not Found')
+  end
+  
 end

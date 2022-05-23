@@ -44,6 +44,8 @@ class UsersController < ApplicationController
     if @user.present?
       @questions = @user.questions.order(created_at: :desc)
       @question = Question.new(user: @user)
+    else
+      render_404
     end
   end
 
