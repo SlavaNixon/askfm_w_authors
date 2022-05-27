@@ -41,12 +41,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @user.present?
+    #if @user.present?
+      User.find(User.find_by(nickname: params[:nickname])&.id)
       @questions = @user.questions.order(created_at: :desc)
       @question = Question.new(user: @user)
-    else
-      render_404
-    end
+    #else
+     # render_404
+    #end
   end
 
   private
