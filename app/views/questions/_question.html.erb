@@ -11,7 +11,7 @@
 <div class="mb-ssm">
   <% if question.hashtags %>
     <% question.hashtags.each do |hashtag| %>
-      <% question.body.gsub!("##{hashtag.body}", link_to("##{hashtag.body}", root_path)) %>
+      <% question.body.gsub!("##{hashtag.body}", link_to("##{hashtag.body}", hashtag_list_path(hashtag.hashtag_list))) %>
     <% end %>
   <% end %>
 
