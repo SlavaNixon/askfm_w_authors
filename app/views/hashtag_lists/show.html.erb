@@ -2,7 +2,7 @@
   <h2 class="title-lg">Все вопросы и ответы с хештегом: #<%= @hashtag.body %></h2>
 </div>
 
-<% @hashtag.hashtags.each do |hashtag| %>
+<% @hashtag.hashtags.uniq{ |hashtag| hashtag.body && hashtag.question }.each do |hashtag| %>
   <div class="mt-sm container">
     <%= render "questions/question", question: hashtag.question %>
   </div>
