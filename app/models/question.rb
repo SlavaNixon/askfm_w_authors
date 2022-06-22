@@ -12,18 +12,13 @@ class Question < ApplicationRecord
 
     # Парсинг хештегов у вопроса
     HashtagParser.parse(self.body).each do |element| 
-      if Hashtag.where("lower(body) = ?", element[:text].downcase).and(Hashtag.where(question: self)).empty?
         self.hashtags << Hashtag.create(body: element[:text], question: self)
-      end
     end
 
     # Парсинг хештегов у ответа
     if answer
       HashtagParser.parse(self.answer).each do |element| 
-        # Проверка, чтобы недопустить дубликатов при наличии одного и того же хештега в ответе и вопросе
-        if Hashtag.where("lower(body) = ?", element[:text].downcase).and(Hashtag.where(question: self)).empty?
           self.hashtags << Hashtag.create(body: element[:text], question: self)
-        end
       end
     end
   end
