@@ -9,7 +9,13 @@
 </div>
 
 <div class="mb-ssm">
-  <%= question.body %>
+  <% if question.hashtags %>
+    <% question.hashtags.each do |hashtag| %>
+      <% question.body.gsub!("##{hashtag.body}", link_to("##{hashtag.body}", root_path)) %>
+    <% end %>
+  <% end %>
+
+  <%= question.body.html_safe %>
 </div>
 
 <% unless question.who_ask == question.user %>

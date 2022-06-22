@@ -96,6 +96,7 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashtag_parser (0.1.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.0.1)
@@ -225,6 +226,7 @@ DEPENDENCIES
   debug
   font-awesome-rails
   friendly_id (~> 5.4.0)
+  hashtag_parser
   importmap-rails
   jbuilder
   pg

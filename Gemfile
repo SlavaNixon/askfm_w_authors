@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
+gem 'hashtag_parser'
+
 gem 'font-awesome-rails'
 
 gem 'friendly_id', '~> 5.4.0'
