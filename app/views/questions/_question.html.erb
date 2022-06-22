@@ -26,7 +26,13 @@
 
 <% if question.answer.present? %>
   <div class="mb-sm mt-md text-dark-red">
-    <%= question.answer %>
+    <% if question.hashtags %>
+      <% question.hashtags.each do |hashtag| %>
+        <% question.answer.gsub!("##{hashtag.body}", link_to("##{hashtag.body}", hashtag_list_path(hashtag.hashtag_list))) %>
+      <% end %>
+    <% end %>
+
+    <%= question.answer.html_safe %>
   </div>
 <% end %>
 
