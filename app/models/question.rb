@@ -3,7 +3,9 @@ class Question < ApplicationRecord
 
   belongs_to :user
   belongs_to :who_ask, class_name: "User", optional: true
+
   has_many :hashtags, dependent: :destroy
+  has_many :hashtag_lists, through: :hashtags, dependent: :destroy
 
   private
 

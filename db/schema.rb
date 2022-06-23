@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_043141) do
+ActiveRecord::Schema.define(version: 2022_06_23_144052) do
 
   create_table "hashtag_lists", force: :cascade do |t|
     t.string "body"
     t.integer "hashtag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "question_id"
     t.index ["hashtag_id"], name: "index_hashtag_lists_on_hashtag_id"
+    t.index ["question_id"], name: "index_hashtag_lists_on_question_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
@@ -38,7 +40,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_043141) do
     t.text "answer"
     t.integer "who_ask_id"
     t.integer "hashtag_id"
+    t.integer "hashtag_list_id"
     t.index ["hashtag_id"], name: "index_questions_on_hashtag_id"
+    t.index ["hashtag_list_id"], name: "index_questions_on_hashtag_list_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -53,7 +57,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_043141) do
   end
 
   add_foreign_key "hashtag_lists", "hashtags"
+  add_foreign_key "hashtag_lists", "questions"
   add_foreign_key "hashtags", "hashtag_lists"
   add_foreign_key "hashtags", "questions"
+  add_foreign_key "questions", "hashtag_lists"
   add_foreign_key "questions", "hashtags"
 end
